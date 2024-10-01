@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends 'index.html'%}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-8 grid-margin stretch-card">
+
+<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Add Category</h4>
+
+                  <form class="forms-sample" method="post" action="{% url 'update_category' category_id=data.id %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputName1">Item</label>
+                      <input type="text" value="{{data.item}}" name="item" class="form-control" id="exampleInputName1" placeholder="Name">
+                    </div>
+
+
+
+                    <div class="form-group">
+                      <label>File upload</label>
+<!--                      <input type="file"  class="file-upload-default">-->
+                      <div class="input-group col-xs-12">
+                          <img src="{{data.image.url}}" width="200" height="200">
+                        <input type="file" class="form-control file-upload-info" name="image" placeholder="Upload Image">
+<!--                        <span class="input-group-append">-->
+<!--                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>-->
+<!--                        </span>-->
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleTextarea1">Description</label>
+                      <textarea class="form-control" name="description" id="exampleTextarea1" rows="4">{{data.description}}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+</div>
+</body>
+<style>
+  button{
+  background-color:#f96868 !important;
+  color:white !important;
+  }
+</style>
+</html>
+{% endblock %}

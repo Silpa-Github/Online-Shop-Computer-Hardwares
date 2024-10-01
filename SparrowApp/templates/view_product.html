@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-lg-9 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Product Categories</h4>
+
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                            <th>Id</th>
+                          <th>Product Category</th>
+                          <th>Product Name</th>
+                          <th>Company</th>
+                            <th>Price</th>
+                            <th>Image1</th>
+                            <th>Image2</th>
+                            <th>Image3</th>
+                            <th>Specification</th>
+                            <th>Description</th>
+                            <th>Option</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in data %}
+                        <tr>
+                           <td>{{i.id}}</td>
+                          <td>{{i.category}}</td>
+                          <td>{{i.product_name}}</td>
+                          <td>{{i.company}}</td>
+                          <td>{{i.price}}</td>
+                          <td><img src="{{i.image1.url}}"></td>
+                          <td><img src="{{i.image2.url}}"></td>
+                          <td><img src="{{i.image3.url}}"></td>
+                          <td>{{i.specification}}</td>
+                          <td>{{i.description}}</td>
+                          <td>
+                            <a href="{% url 'edit_product' pro_id=i.id %}">
+                              <button class="btn btn-outline-danger">Edit</button>
+                            </a>
+                             <a href="{% url 'delete_product' pro_id=i.id %}">
+                              <button class="btn btn-outline-danger">Delete</button>
+                            </a>
+                          </td>
+                        </tr>
+                      {% endfor %}
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% extends 'index.html'%}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-8 grid-margin stretch-card">
+
+<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Update Products</h4>
+
+                  <form class="forms-sample" method="post" action="{% url 'update_product' pro_id=data.id %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="form-group">
+                      <label >Category</label>
+                          <select name="category">
+                              <option>{{data.category}}</option>
+                              {% for i in cat %}
+                              <option>{{i.item}}</option>
+                              {% endfor %}
+                          </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Product Name</label>
+                      <input type="text" value="{{data.product_name}}" name="product_name" class="form-control" placeholder="Product Name">
+                    </div>
+                      <div class="form-group">
+                      <label>Company</label>
+                      <input type="text" value="{{data.company}}" name="company" class="form-control" placeholder="Company Name">
+                    </div>
+                       <div class="form-group">
+                      <label>Price</label>
+                      <input type="number" value="{{data.price}}" name="price" class="form-control" placeholder="Price">
+                    </div>
+
+
+
+                    <div class="form-group">
+                      <label>File upload</label>
+                        <img src="{{data.image1.url}}" width="100" height="100">
+<!--                      <input type="file"  class="file-upload-default">-->
+                      <div class="input-group col-xs-12">
+
+                        <input type="file" class="form-control file-upload-info" name="image1" placeholder="Upload Image">
+<!--                        <span class="input-group-append">-->
+<!--                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>-->
+<!--                        </span>-->
+                      </div>
+                    </div>
+                     <div class="form-group">
+                      <label>File upload</label>
+                         <img src="{{data.image2.url}}" width="100" height="100">
+<!--                      <input type="file"  class="file-upload-default">-->
+                      <div class="input-group col-xs-12">
+                        <input type="file" class="form-control file-upload-info" name="image2" placeholder="Upload Image">
+<!--                        <span class="input-group-append">-->
+<!--                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>-->
+<!--                        </span>-->
+                      </div>
+                    </div>
+                      <div class="form-group">
+                      <label>File upload</label>
+                          <img src="{{data.image3.url}}" width="100" height="100">
+<!--                      <input type="file"  class="file-upload-default">-->
+                      <div class="input-group col-xs-12">
+                        <input type="file" class="form-control file-upload-info" name="image3" placeholder="Upload Image">
+<!--                        <span class="input-group-append">-->
+<!--                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>-->
+<!--                        </span>-->
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleTextarea1">Specification</label>
+                      <textarea class="form-control" name="spec" id="exampleTextarea1" rows="4">{{data.specification}}</textarea>
+                    </div>
+                       <div class="form-group">
+                      <label>Description</label>
+                      <textarea class="form-control" name="desc"  rows="4">{{data.description}}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+</div>
+</body>
+<style>
+  button{
+  background-color:#f96868 !important;
+  color:white !important;
+  }
+</style>
+</html>
+{% endblock %}

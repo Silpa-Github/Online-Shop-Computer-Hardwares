@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-lg-9 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Contact Message Details</h4>
+
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                            <th>Name</th>
+                          <th>Email Id</th>
+                          <th>Message</th>
+                            <th>Option</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in msg %}
+                        <tr>
+                         <td>{{i.Name}}</td>
+                         <td>{{i.Email_id}}</td>
+                         <td>{{i.Message}}</td>
+                          <td>
+
+                             <a href="{% url 'deletecontactmessage' contact_id=i.id %}">
+                              <button class="btn btn-outline-danger">Delete</button>
+                            </a>
+                          </td>
+                        </tr>
+                      {% endfor %}
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+</body>
+</html>
+{% endblock %}
